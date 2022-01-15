@@ -7,6 +7,12 @@
 # Running the Virtual Image
 ## Set-Up
 -choose generic location and stuff ...
+
+## Network config
+Hostname: amaria-d42
+Domain name: born2
+
+## Users and Passwords
 root_pwd: root
 FullName: born2beroot
 username: beroot
@@ -15,6 +21,7 @@ password: beroot
 ## Disk Partioning
 -Guided partitioning
 -... use entire disk and set up encrypted LVM
+-Separate /home partition
 encr_passw: encrypted
 
 ## Software selection
