@@ -15,3 +15,15 @@ password: beroot
 ## Disk Partioning
 -Guided partitioning
 -... use entire disk and set up encrypted LVM
+encr_passw: encrypted
+
+## Software selection
+-SSH server
+-standard system utilities
+
+## GRUB boot loader
+-Yes install
+-/dev/sda
+
+# MISTAKES !!!!
+gotta make another partition for home
