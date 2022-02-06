@@ -46,4 +46,9 @@ Numerous other graphical interfaces then appeared as external projects: synaptic
 ## AppArmor
 { checkout AppArmor.epub }
 
+## Sudo
+```console
+apt install sudo
+usermod -a -G sudo beroot
+```
 
