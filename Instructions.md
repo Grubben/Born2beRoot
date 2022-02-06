@@ -52,3 +52,10 @@ apt install sudo
 usermod -a -G sudo beroot
 ```
 
+## SSH
+In /etc/ssh/sshd_config Write:
+	Port 4242
+	PermitRootLogin no
+```console
+sudo service ssh restart```
+
