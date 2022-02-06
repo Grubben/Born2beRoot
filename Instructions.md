@@ -1,8 +1,10 @@
 # Setting up VirtualBox
 -Settings
 -Storage
--Controller: IDE
--<blue disk> => right click and select debian iso
+	-Controller: IDE
+	-<blue disk> => right click and select debian iso
+-Network
+	Bridged Adapter
 
 # Running the Virtual Image
 ## Set-Up
@@ -59,3 +61,12 @@ In /etc/ssh/sshd_config Write:
 ```console
 sudo service ssh restart```
 
+## FIREWALL
+```console
+# apt install -y nftables```
+
+## MISC
+Find ip
+```ip a```
+Shut down
+```systemctl poweroff```
