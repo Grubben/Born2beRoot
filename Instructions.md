@@ -66,8 +66,8 @@ Creating the group user42
 groupadd user42
 ```
 ```console
-usermod -a -G sudo amaria-d
-usermod -a -G user42 amaria-d
+usermod -aG sudo amaria-d
+usermod -aG user42 amaria-d
 ```
 
 ## Password Policy
@@ -85,6 +85,19 @@ Note that root is not asked for an old password so the checks that comapre the o
 ```shell
 sudo reboot
 ```
+
+## Configuring Sudo
+To read the option see
+```man sudoers```
+In /etc/sudoers Write:
+#	Defaults	insults
+	Defaults	passwd_tries=3
+	Defaults	badpass_messag="Wrong, try again!"
+	Defaults	log_input, log_output
+	Defaults	log_file="/var/log/sudo/sudo.log"
+
+	Defaults	requiretty
+	Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 
 ## FIREWALL
 ```console
