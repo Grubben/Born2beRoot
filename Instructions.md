@@ -75,6 +75,16 @@ In /etc/login.defs Write:
 	PASS_MAX_DAYS	30
 	PASS_MIN_DAYS	2
 	PASS_WARN_AGE	7
+```shell
+sudo apt-get -y install libpam-pwquality cracklib-runtime
+```
+In /etc/pam.d/common-password Write:
+	password    requisite      pam_pwquality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7
+
+Note that root is not asked for an old password so the checks that comapre the old and new password are not performed. So, basically, the phrase `The following rule does not apply to the root password` means you can't make difok=7 work for root and not that you must create a separate rule for root.
+```shell
+sudo reboot
+```
 
 ## FIREWALL
 ```console
@@ -83,10 +93,15 @@ In /etc/login.defs Write:
 
 ## MISC
 Find ip
-```
-ip a
-```
+```ip a```
+
 Shut down
-```
-systemctl poweroff
-```
+```systemctl poweroff```
+
+Add a user
+```useradd test```
+
+Add or Change a password
+```passwd```
+or
+```sudo passwd test```
