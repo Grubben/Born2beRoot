@@ -12,13 +12,13 @@
 
 ## Network config
 Hostname: amaria-d42
-Domain name: born2
+Domain name: 
 
 ## Users and Passwords
-root_pwd: root
-FullName: born2beroot
-username: beroot
-password: beroot
+root_pwd: root 
+FullName: Antonio
+username: amaria-d
+password: born2
 
 ## Disk Partioning
 -Guided partitioning
@@ -34,7 +34,6 @@ encr_passw: encrypted
 -Yes install
 -/dev/sda
 
-# MISTAKES !!!!
 
 # Set Up
 ## apt vs apt-get vs aptitude
@@ -48,25 +47,46 @@ Numerous other graphical interfaces then appeared as external projects: synaptic
 ## AppArmor
 { checkout AppArmor.epub }
 
-## Sudo
-```console
-apt install sudo
-usermod -a -G sudo beroot
-```
-
 ## SSH
 In /etc/ssh/sshd_config Write:
 	Port 4242
 	PermitRootLogin no
 ```console
-sudo service ssh restart```
+sudo service ssh restart
+```
+
+## Sudo
+```console
+apt install sudo
+```
+
+## GROUPS
+Creating the group user42
+```shell
+groupadd user42
+```
+```console
+usermod -a -G sudo amaria-d
+usermod -a -G user42 amaria-d
+```
+
+## Password Policy
+In /etc/login.defs Write:
+	PASS_MAX_DAYS	30
+	PASS_MIN_DAYS	2
+	PASS_WARN_AGE	7
 
 ## FIREWALL
 ```console
-# apt install -y nftables```
+# apt install -y nftables
+```
 
 ## MISC
 Find ip
-```ip a```
+```
+ip a
+```
 Shut down
-```systemctl poweroff```
+```
+systemctl poweroff
+```
