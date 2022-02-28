@@ -47,14 +47,6 @@ Numerous other graphical interfaces then appeared as external projects: synaptic
 ## AppArmor
 { checkout AppArmor.epub }
 
-## SSH
-In /etc/ssh/sshd_config Write:
-	Port 4242
-	PermitRootLogin no
-```console
-sudo service ssh restart
-```
-
 ## Sudo
 ```console
 apt install sudo
@@ -63,11 +55,18 @@ apt install sudo
 ## GROUPS
 Creating the group user42
 ```shell
-groupadd user42
+groupad user42
 ```
 ```console
 usermod -aG sudo amaria-d
 usermod -aG user42 amaria-d
+```
+## SSH
+In /etc/ssh/sshd_config Write:
+	Port 4242
+	PermitRootLogin no
+```console
+sudo service ssh restart
 ```
 
 ## Password Policy
