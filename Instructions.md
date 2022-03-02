@@ -100,7 +100,11 @@ In /etc/sudoers Write:
 
 ## FIREWALL
 ```console
-# apt install -y nftables
+sudo apt install ufw
+sudo ufw default deny incoming
+sudo ufw allow 4242
+sudo ufw enable
+sudo ufw status verbose
 ```
 
 ## MISC
