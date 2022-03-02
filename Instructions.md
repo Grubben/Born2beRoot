@@ -55,7 +55,7 @@ apt install sudo
 ## GROUPS
 Creating the group user42
 ```shell
-groupad user42
+groupadd user42
 ```
 ```console
 usermod -aG sudo amaria-d
@@ -75,12 +75,12 @@ In /etc/login.defs Write:
 	PASS_MIN_DAYS	2
 	PASS_WARN_AGE	7
 ```shell
-sudo apt-get -y install libpam-pwquality cracklib-runtime
+sudo apt install libpam-pwquality cracklib-runtime
 ```
 In /etc/pam.d/common-password Write:
 	password    requisite      pam_pwquality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7
 
-Note that root is not asked for an old password so the checks that comapre the old and new password are not performed. So, basically, the phrase `The following rule does not apply to the root password` means you can't make difok=7 work for root and not that you must create a separate rule for root.
+Note that root is not asked for an old password so the checks that compare the old and new password are not performed. So, basically, the phrase `The following rule does not apply to the root password` means you can't make difok=7 work for root and not that you must create a separate rule for root.
 ```shell
 sudo reboot
 ```
@@ -91,9 +91,9 @@ To read the option see
 In /etc/sudoers Write:
 #	Defaults	insults
 	Defaults	passwd_tries=3
-	Defaults	badpass_messag="Wrong, try again!"
+	Defaults	badpass_message="Wrong, try again!"
 	Defaults	log_input, log_output
-	Defaults	log_file="/var/log/sudo/sudo.log"
+	Defaults	iolog_file="/var/log/sudo/sudo.log"
 
 	Defaults	requiretty
 	Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
