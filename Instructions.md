@@ -55,7 +55,7 @@ apt install sudo
 ## GROUPS
 Creating the group user42
 ```shell
-groupad user42
+groupadd user42
 ```
 ```console
 usermod -aG sudo amaria-d
@@ -102,6 +102,26 @@ In /etc/sudoers Write:
 ```console
 # apt install -y nftables
 ```
+## Hostname
+Show hostname
+```console
+hostname
+```
+Show hostname for connection (for example ssh)
+```console
+hostname -A
+```
+
+Change Hostname
+In /etc/hostname Replace:
+	new-hostname-here
+In /etc/hosts Replace:
+	127.0.0.1	localhost
+	127.0.0.1	old-hostname
+With:
+	127.0.0.1	localhost
+	127.0.0.1	new-hostname-here
+
 
 ## MISC
 Find ip
