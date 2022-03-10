@@ -122,7 +122,28 @@ echo vCPU: $(lscpu | grep "Core(s)")
 echo Memory Usage: $(free -m | grep Mem | awk -F " " '{printf "%d/%d (%.2f%%)", $4, $2, $4/$2*100}')
 echo Disk Usage: $(df -h / | grep '/' | awk -F " " '{printf "%s/%s (%s)", $4, $2, $5}')
 
-## MISC 
+## Hostname
+Show hostname
+```console
+hostname
+```
+Show hostname for connection (for example ssh)
+```console
+hostname -A
+```
+
+Change Hostname
+In /etc/hostname Replace:
+	new-hostname-here
+In /etc/hosts Replace:
+	127.0.0.1	localhost
+	127.0.0.1	old-hostname
+With:
+	127.0.0.1	localhost
+	127.0.0.1	new-hostname-here
+
+
+## MISC
 Find ip
 ```ip a```
 
