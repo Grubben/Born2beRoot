@@ -87,7 +87,9 @@ sudo reboot
 
 ## Configuring Sudo
 To read the option see
-```man sudoers```
+```
+man sudoers
+```
 In /etc/sudoers Write:
 #	Defaults	insults
 	Defaults	passwd_tries=3
@@ -99,6 +101,7 @@ In /etc/sudoers Write:
 	Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 
 ## FIREWALL
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-debian-10
 ```console
 sudo apt install ufw
 sudo ufw default deny incoming
@@ -106,8 +109,20 @@ sudo ufw allow 4242
 sudo ufw enable
 sudo ufw status verbose
 ```
+## Monitoring
+{
+	hostnamectl
+	Architecture of OS
+	?
+	Kernel Version
+	uname -v
+}	uname -a
+echo CPU physical : $(lscpu | grep "^CPU(s):")
+echo vCPU: $(lscpu | grep "Core(s)")
+echo Memory Usage: $(free -m | grep Mem | awk -F " " '{printf "%d/%d (%.2f%%)", $4, $2, $4/$2*100}')
+echo Disk Usage: $(df -h / | grep '/' | awk -F " " '{printf "%s/%s (%s)", $4, $2, $5}')
 
-## MISC
+## MISC 
 Find ip
 ```ip a```
 
