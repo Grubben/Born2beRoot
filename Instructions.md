@@ -111,30 +111,40 @@ sudo ufw status verbose
 ```
 
 ## Monitoring
-{
-	hostnamectl
-	Architecture of OS
-	?
-	Kernel Version
-	uname -v
-}	uname -a
-echo CPU physical: $(lscpu | grep "^CPU(s):")
-echo vCPU: $(lscpu | grep "Core(s)")
-echo Memory Usage: $(free -m | grep Mem | awk -F " " '{printf "%d/%d (%.2f%%)", $4, $2, $4/$2*100}')
-echo Disk Usage: $(df -h / | grep '/' | awk -F " " '{printf "%s/%s (%s)", $4, $2, $5}')
-top -n 1 | grep %Cpu | awk -F " " '{printf "%%Cpu(s): %s%%", $2}'
-last reboot --time-format iso | sed -n 2p | awk -F " " '{printf "Last boot: %s", $5}'
-printf "LVM use: "
-if [ $(lsblk | grep /home | awk -F" " '{print $6}') = "lvm" ]; then
-	printf "yes";
-else
-	printf "no";
-fi
-printf "TCP Connections: %s" $(ss -t | grep ESTAB| wc -l)
-printf "Active Users: %s" $(who | wc -l)
-printf "Network: %s (%s)" $(ip a | grep inet | sed -n 3p | awk -F " " '{print $2}') $(ip link | sed -n 4p | awk -F " " '{print $2}')
-\# sudo apt install net-tools
-echo Sudo commands: $(journalctl _COMM=sudo | grep COMMAND | wc -l)
+{ checkout monitoring.sh }
+	{
+		hostnamectl
+		Architecture of OS
+		?
+		Kernel Version
+		uname -v
+	}	uname -a
+	echo CPU physical: $(lscpu | grep "^CPU(s):")
+	echo vCPU: $(lscpu | grep "Core(s)")
+	echo Memory Usage: $(free -m | grep Mem | awk -F " " '{printf "%d/%d (%.2f%%)", $4, $2, $4/$2*100}')
+	echo Disk Usage: $(df -h / | grep '/' | awk -F " " '{printf "%s/%s (%s)", $4, $2, $5}')
+	top -n 1 | grep %Cpu | awk -F " " '{printf "%%Cpu(s): %s%%", $2}'
+	last reboot --time-format iso | sed -n 2p | awk -F " " '{printf "Last boot: %s", $5}'
+	printf "LVM use: "
+	if [ $(lsblk | grep /home | awk -F" " '{print $6}') = "lvm" ]; then
+		printf "yes";
+	else
+		printf "no";
+	fi
+	printf "TCP Connections: %s" $(ss -t | grep ESTAB| wc -l)
+	printf "Active Users: %s" $(who | wc -l)
+	printf "Network: %s (%s)" $(ip a | grep inet | sed -n 3p | awk -F " " '{print $2}') $(ip link | sed -n 4p | awk -F " " '{print $2}')
+	\# sudo apt install net-tools
+	echo Sudo commands: $(journalctl _COMM=sudo | grep COMMAND | wc -l)
+
+Pass `monitoring.sh` to `/usr/local/bin`
+```console
+sudo crontab -e
+```
+Then write:
+```text
+*/10 * * * * /usr/local/bin/monitoring.sh
+```
 
 ## Hostname
 Show hostname
