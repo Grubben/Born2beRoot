@@ -1,3 +1,4 @@
+#!/bin/bash
 wall """Architecture: $(uname -a)
 CPU physical: $(lscpu | grep "^CPU(s):" | awk -F" " '{print $2}')
 vCPU: $(lscpu | grep "Core(s)" | awk -F" " '{print $2}')
