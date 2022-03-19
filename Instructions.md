@@ -181,3 +181,8 @@ Add or Change a password
 ```passwd```
 or
 ```sudo passwd test```
+
+Send files/folders to remote location
+```
+scp -P 4242 monitoring.sh amaria-d@10.11.248.58:/home/amaria-d
+```
