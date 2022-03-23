@@ -202,3 +202,6 @@ scp -P 4242 monitoring.sh amaria-d@10.11.248.58:/home/amaria-d
 
 See groups
 ```groups```
+
+Show all users
+```cat /etc/passwd```
