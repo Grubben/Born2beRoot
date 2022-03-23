@@ -156,6 +156,7 @@ sudo crontab -e
 ```
 Then write:
 ```text
+@reboot sleep 20; sh /usr/local/bin/monitoring.sh
 */10 * * * * /usr/local/bin/monitoring.sh
 ```
 
