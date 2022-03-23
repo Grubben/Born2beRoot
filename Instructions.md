@@ -85,6 +85,19 @@ Note that root is not asked for an old password so the checks that compare the o
 sudo reboot
 ```
 
+### New passwords
+Changing the root password
+```shell
+sudo passwd root
+Ant0nio123
+```
+
+Changing amaria-d's password
+```shell
+sudo passwd amaria-d
+Born2beRoot
+```
+
 ## Configuring Sudo
 To read the option see
 ```
@@ -186,3 +199,6 @@ Send files/folders to remote location
 ```
 scp -P 4242 monitoring.sh amaria-d@10.11.248.58:/home/amaria-d
 ```
+
+See groups
+```groups```
